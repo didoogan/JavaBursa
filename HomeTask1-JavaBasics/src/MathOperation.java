@@ -268,7 +268,7 @@ public class MathOperation {
 		// System.out.println(factorial );
 
 		int sumOfRow = math.getSumOfRow(1234);
-		// System.out.println(sumOfRow );
+		//System.out.println(sumOfRow );
 
 		int count = math.getSixDigitNumbersCount();
 		//System.out.println(count );
