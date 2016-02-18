@@ -242,8 +242,35 @@ public class MathOperation {
 	 *            the number of rows in the triangle
 	 */
 	public void printPascalsTriangle(int numberOfRows) {
-		// TODO the method body
-	}
+
+        int[][] array = new int[numberOfRows][];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = new int[i+1];
+            array[i][0] = 1;
+            array[i][i] = 1;
+            if(array[i].length < 3) {
+                continue;
+            }
+            for(int j = 1; j < i; j++) {
+                array[i][j] = array[i - 1][j - 1] + array[i - 1][j];
+            }
+        }
+        
+        for (int i = 0; i < array.length; i++) {
+            int[] is = array[i];
+            for (int j = 0; j < (10-i)/2; j++) {
+                System.out.print("    ");
+            }
+            if (i % 2 == 1) {
+                System.out.print("  ");
+            }
+            for (int j = 0; j < is.length; j++) {
+                System.out.format("%-4d", is[j]);
+            }
+            System.out.println();
+        }
+    }
+	
 	
 	public static void main(String[] args) {
 		MathOperation math = new MathOperation();
@@ -253,7 +280,7 @@ public class MathOperation {
 
 
 		int sumOfDigits = math.getSumOfDigits(123456); // 21
-		System.out.println(sumOfDigits);
+		//System.out.println(sumOfDigits);
 
 		boolean isPrime = math.isPrime(7); // true
 		 /*for (int i = 1;i < 100 ;i++ ) {
@@ -286,6 +313,6 @@ public class MathOperation {
 		//math.printChessboard();
 		int numbersCount = math.createSixDimensionArray();
 		System.out.println(numbersCount);
-		// math.printPascalsTriangle(3);
+		math.printPascalsTriangle(10);
 	}
 }
