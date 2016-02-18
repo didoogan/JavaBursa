@@ -209,9 +209,32 @@ public class MathOperation {
 	 * @return
 	 */
 	public int createSixDimensionArray() {
-		return 0;
-	}
+		
+		int [][][][][][] array_6d = new int [2][2][2][2][2][2];
+		int result = 1;
+		
+		for (int i = 0; i < array_6d.length; i++) {
+			int[][][][][] array_5d = array_6d[i];
+			for (int j = 0; j < array_5d.length; j++) {
+				int[][][][] array_4d = array_5d[j];
+				for (int k = 0; k < array_4d.length; k++) {
+					int [][][] array_3d = array_4d[k];
+					for (int l = 0; l < array_3d.length; l++) {
+						int[][] array_2d = array_3d[l];
+						for (int m = 0; m < array_2d.length; m++) {
+							int [] array_1d = array_2d[m];
+							for (int n = 0; n < array_1d.length; n++) {
+								array_1d[n] = result;
+								result ++;
+							}
+						}
+					}
+				}
+			}
+		}
+		return result -1;
 
+	}	
 	/**
 	 * Prints to console Pascal's triangle with the given number of rows
 	 * 
@@ -230,7 +253,7 @@ public class MathOperation {
 
 
 		int sumOfDigits = math.getSumOfDigits(123456); // 21
-		// System.out.println(sumOfDigits);
+		System.out.println(sumOfDigits);
 
 		boolean isPrime = math.isPrime(7); // true
 		 /*for (int i = 1;i < 100 ;i++ ) {
@@ -256,12 +279,13 @@ public class MathOperation {
 		 }*/
 
 		int [] primes = math.getPrimeSeries(100); // 1, 3, 5, 7, 11
-		for (int i =0; i < primes.length ;i++ ) {
+		/*for (int i =0; i < primes.length ;i++ ) {
 			System.out.println(primes[i]);
-		}
+		}*/
 
 		//math.printChessboard();
-		// int numbersCount = math.createSixDimensionArray();
+		int numbersCount = math.createSixDimensionArray();
+		System.out.println(numbersCount);
 		// math.printPascalsTriangle(3);
 	}
 }
