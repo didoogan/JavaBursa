@@ -79,8 +79,11 @@ public class Matrix {
 		int columns = matrix.columns;
 						
 		double [][] date = new double [rows][columns];
-		Matrix result = new Matrix (date);
+		Matrix result = null;
 		
+		if (this.rows == matrix.columns) {
+			result = new Matrix (date);
+		}
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
 				for (int k = 0;  k < rows ; k++) {
