@@ -23,7 +23,7 @@ public class Vector {
 	 */
 	public Vector(int size) {
 		
-		this.size = size;
+		this.objects = new Object [size];
 	}
 
 	/**
@@ -41,9 +41,10 @@ public class Vector {
 				
 			}
 			this.objects = array.clone();
-			this.counter ++;
+			
 		} 
 		this.objects[this.counter] = element;
+		this.counter ++;
 		
 	}
 
