@@ -69,18 +69,13 @@ public class Circle {
 	 */
 	public boolean isCircleInCurrentCircle(Circle circle) {
 		
-		boolean result = false;
 		int length;
 		
 		length = (int) Math.sqrt(
 		Math.pow(circle.centerX - this.centerX, 2) - 
 		Math.pow(circle.centerY - this.centerY, 2) 
 		);
-		
-		if (length <= (circle.radius + this.radius) ){
-			result = true;
-		}
-		return result;
+		return (length <= (circle.radius + this.radius) );
 	}
 
 	@Override

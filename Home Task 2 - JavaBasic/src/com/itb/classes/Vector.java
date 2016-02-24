@@ -7,13 +7,14 @@ public class Vector {
 
 	private Object[] objects;
 	private int size;
+	private  int counter = 0;
 
 	/**
 	 * Creates a new instance of Vector with default size (default size = 10).
 	 */
 	public Vector() {
-		new Vector();
 		this.size = Vector.DEFAULT_SIZE;
+		this.objects = new Object [this.size];
 		
 	}
 
@@ -21,7 +22,7 @@ public class Vector {
 	 * Creates a new instance of Vector with a specified size.
 	 */
 	public Vector(int size) {
-		new Vector();
+		
 		this.size = size;
 	}
 
@@ -32,7 +33,18 @@ public class Vector {
 	 *            - element to be appended to this vector
 	 */
 	public void add(Object element) {
-		this.objects[objects.length] = element;
+		if (this.counter > this.size) {
+			 Object [] array = new Object[this.size + 10];
+			
+			 for (int i = 0; i < this.size; i++) {
+				array[i] = this.objects[i];
+				
+			}
+			this.objects = array.clone();
+			this.counter ++;
+		} 
+		this.objects[this.counter] = element;
+		
 	}
 
 	/**
@@ -55,22 +67,28 @@ public class Vector {
 	 *            - the index of the element to be removed
 	 */
 	public void remove(int index) {
-		this.objects[index] = null;
+		for (int i = index; i < this.objects.length -1; i++) {
+			this.objects[i] = this.objects[i +1];
+		}
+		this.objects[this.size] = null;
+		this.size --;
+		this.counter --;
 	}
 
 	/**
 	 * Removes all of the elements from this vector.
 	 */
 	public void clear() {
-		for( Object object : this.objects) {
-			object = null;
+		for (int i = 0; i < this.objects.length; i++) {
+			this.objects = null;
 		}
+		
 	}
 
 	@Override
 	public String toString() {
 		String output = "";
-		for (int i = 0; i < this.objects.length; i ++) {
+		for (int i = 0; i < this.counter; i ++) {
 			output += String.format(" The %d-th element contain %s  ", 
 					this.objects[i], this.objects[i].toString() );
 		}
