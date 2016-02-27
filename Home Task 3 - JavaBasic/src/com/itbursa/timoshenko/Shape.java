@@ -1,69 +1,39 @@
 package com.itbursa.timoshenko;
 
 public abstract class Shape {
-	int[][] ordinates;
+	Point[] ordinates;
 
 	public Shape() {
 
 	}
 
-	public Shape(int[][] ordinates) {
+	public Shape(Point[] ordinates) {
 		this.ordinates = ordinates;
 	}
 
-	public Shape scaleShape() {
-		return this;
+	public void scaleShape(int k) {
+		for (int i = 0; i < ordinates.length; i++) {
+			this.ordinates[i].x *= k;
+			this.ordinates[i].y *= k;
+
+		}
 	}
 
-	public Shape moveShape() {
-		return this;
+	public void moveShape(int x, int y) {
+		for (int i = 0; i < ordinates.length; i++) {
+			this.ordinates[i].x += x;
+			this.ordinates[i].y += y;
+
+		}
 	}
 
 	@Override
 	public String toString() {
-		return new String();
-	}
-
-}
-
-abstract class Quadro extends Shape {
-	int[][] ordinates;
-
-	public Quadro() {
-		super();
-	}
-
-	public Quadro(int[][] ordinates) {
-
-		this.ordinates = ordinates;
-	}
-
-	public int[][] scaleShape(int k) {
-		for (int i = 0; i < this.ordinates.length; i++) {
-			for (int j = 0; j < this.ordinates[i].length; j++) {
-				this.ordinates[i][j] *= k;
-			}
+		String result = "";
+		for (Point point : ordinates) {
+			result += "\n" + point.x + ", " + point.y + ";" + "\n" + "\n" ;
 		}
-		return this.ordinates;
+		return result;
 	}
-
-	public int[][] moveShape(int x, int y) {
-		for (int i = 0; i < this.ordinates.length; i++) {
-			for (int j = 0; j < ordinates[i].length; j++) {
-				if (i == 0) {
-					this.ordinates[i][j] += x;
-					continue;
-				}
-
-				this.ordinates[i][j] = ordinates[i][j] + y;
-
-			}
-		}
-		return this.ordinates;
-	}
-
-}
-
-abstract class Circle extends Shape {
 
 }
